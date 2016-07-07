@@ -1,1 +1,27 @@
-<h1>Barco</h1>
+<!doctype html>
+<html>
+  <head>
+  </head>
+
+  <body>
+
+  <h1>BARCO</h1>
+  <div id="data"> </div>
+  </body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+
+
+  var socket = io();
+
+
+  socket.on('alpha', function(msg){
+    $("#data").html(msg);
+  });
+
+
+</script>
+
+</html>
