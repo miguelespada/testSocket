@@ -11,7 +11,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/remo', function(req, res){
-  res.sendfile('remo.html');
+  res.sendf.jile('remo.html');
 });
 
 
