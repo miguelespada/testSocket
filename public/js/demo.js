@@ -87,6 +87,7 @@ var DEMO = {
 
   		this.ms_socket.on('alpha', function(msg){
 		    this.ms_alpha =  Math.floor(msg);
+		    console.log(msg);
 	    });
 
         this.ms_stats = new Stats();
