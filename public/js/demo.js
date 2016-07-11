@@ -1,4 +1,7 @@
+var alpha = 0;
+
 var DEMO = {
+
 	ms_Canvas: null,
 	ms_Renderer: null,
 	ms_Camera: null, 
@@ -11,6 +14,7 @@ var DEMO = {
 	ms_alpha: null,
 	ms_socket: null,
 
+
     enable: (function enable() {
         try {
             var aCanvas = document.createElement('canvas');
@@ -20,6 +24,7 @@ var DEMO = {
             return false;
         }
     })(),
+
 	
 	initialize: function initialize(inIdCanvas) {
 		this.ms_Canvas = $('#'+inIdCanvas);
@@ -83,12 +88,12 @@ var DEMO = {
 		this.ms_Time = 0;
 
 		this.ms_socket = io();
-		this.ms_alpha = Math.PI/2;
+		this.ms_alpha = 0;
 
 
   		this.ms_socket.on('alpha', function(msg){
-		    this.ms_alpha =  Math.floor(msg);
-		    console.log(this.ms_alpha);
+		    alpha =  Math.floor(msg);
+		    console.log(alpha);
 	    });
 
         this.ms_stats = new Stats();
@@ -143,11 +148,11 @@ var DEMO = {
 		this.ms_Controls.update();
 		//console.log(noise.perlin2(this.ms_Time, 1));
 		this.ms_Canoa.rotation.x =  noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
-		this.ms_Canoa.rotation.y = 2 * Math.PI * this.ms_alpha / 360;
+		this.ms_Canoa.rotation.y = 2 * Math.PI * alpha / 360;
 		this.ms_Canoa.rotation.z = noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
 		this.display();
 		this.ms_stats.update();
-		console.log(this.ms_alpha);
+		console.log(this.ms_Canoa.rotation.y);
 
 	},
 	
@@ -158,4 +163,5 @@ var DEMO = {
 		this.ms_Canvas.html(this.ms_Renderer.domElement);
 		this.display();
 	}
+
 };
