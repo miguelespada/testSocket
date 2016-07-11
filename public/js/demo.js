@@ -83,6 +83,7 @@ var DEMO = {
 		this.ms_Time = 0;
 
 		this.ms_socket = io();
+		this.ms_alpha = Math.PI/2;
 
 
   		this.ms_socket.on('alpha', function(msg){
@@ -146,6 +147,7 @@ var DEMO = {
 		this.ms_Canoa.rotation.z = noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
 		this.display();
 		this.ms_stats.update();
+
 	},
 	
 	resize: function resize(inWidth, inHeight) {
