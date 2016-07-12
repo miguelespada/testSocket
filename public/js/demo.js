@@ -84,8 +84,7 @@ var DEMO = {
 		this.ms_Camera = new THREE.PerspectiveCamera(55.0, WINDOW.ms_Width / WINDOW.ms_Height, 0.5, 3000000);
 		this.ms_Camera.position.set(0, 300, 0);
 		this.ms_Camera.lookAt(new THREE.Vector3(0, 0, 0));
-		this.ms_Camera.rotation.y = Math.PI / 2;
-		
+
 		// Initialize Orbit control		
 		this.ms_Controls = new THREE.OrbitControls(this.ms_Camera, this.ms_Renderer.domElement);
 	
@@ -217,6 +216,8 @@ var DEMO = {
 		this.ms_Canoa.position.z = this.ms_Canoa.position.z + distX;
 		this.ms_Camera.position.z = this.ms_Canoa.position.z;
 		this.ms_Camera.lookAt(this.ms_Canoa.position);
+		this.ms_Camera.rotation.y = Math.PI / 2;
+
 
 
 		this.display();
