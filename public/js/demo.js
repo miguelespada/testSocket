@@ -184,7 +184,7 @@ var DEMO = {
     display: function display() {
 		this.ms_Water.render();
 		this.ms_Renderer.render(this.ms_Scene, this.ms_Camera);
-		if (gyro != undefined) document.getElementById("Acceleration").innerHTML = gyro.toString();
+		if (gyro != undefined) document.getElementById("Acceleration").innerHTML = "X: " + gyro[0] + "Y: " + gyro[1] + "Z: " + gyro[2];
 	},
 	
 	update: function update() {
