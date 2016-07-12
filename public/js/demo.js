@@ -116,7 +116,7 @@ var DEMO = {
 		this.ms_Scene.add(aMeshMirror);
 
 		// create a cube
-        var cubeGeometry = new THREE.BoxGeometry(40, 20, 80);
+        var cubeGeometry = new THREE.BoxGeometry(4, 2, 80);
         var cubeMaterial = new THREE.MeshPhongMaterial({color: 'red'});
         this.ms_Canoa = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
