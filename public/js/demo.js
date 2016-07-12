@@ -1,4 +1,17 @@
-var acc = [0, 0, 0];
+var gyro = undefined;
+
+function inverseQuaternion(q)
+{
+	return {"x":q.x,"y":q.y,"z":q.z,"w": -q.w};
+}
+
+function computeOrientationQuaternion() {
+
+	var quaternion = gyro;
+	
+	var invertedQ=inverseQuaternion(quaternion);
+	return invertedQ;
+}
 
 var DEMO = {
 
@@ -89,7 +102,8 @@ var DEMO = {
 		this.ms_socket = io();
 
   		this.ms_socket.on('acc', function(msg){
-		    acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
+		    var acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
+		    gyro=computeQuaternionFromEulers(acc[0], acc[1], acc[2]);
 		    console.log(msg);
 	    });
 
@@ -134,10 +148,12 @@ var DEMO = {
 		this.ms_Scene.add(aSkybox);
 	},
 
+
+
     display: function display() {
 		this.ms_Water.render();
 		this.ms_Renderer.render(this.ms_Scene, this.ms_Camera);
-		document.getElementById("Acceleration").innerHTML = acc.toString();
+		document.getElementById("Acceleration").innerHTML = gyro.toString();
 	},
 	
 	update: function update() {
@@ -145,7 +161,13 @@ var DEMO = {
 		this.ms_Water.material.uniforms.time.value += 1.0 / 60.0;
 		this.ms_Controls.update();
 		//console.log(noise.perlin2(this.ms_Time, 1));
-		var quaternion = new THREE.Quaternion();
+		
+		var q=computeOrientationQuaternion(); //w,x,y,z
+		var quot = new THREE.Quaternion(); 
+		quot.set(q.x,q.y,q.z,q.w);//x,y,z,w
+
+		this.ms_Canoa.setRotationFromQuaternion(quot);
+
 		this.ms_Canoa.rotation.z = 2 * Math.PI * acc[2] / 360; //noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
 		this.ms_Canoa.rotation.x = -2 * Math.PI * acc[1] / 360; //noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
 		this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
