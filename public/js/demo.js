@@ -78,8 +78,6 @@ var DEMO = {
 
         this.ms_Canoa.castShadow = true;
 
-        var canoa = this.ms_Canoa;
-
         // add the cube to the scene
         this.ms_Scene.add(this.ms_Canoa);
 
@@ -91,16 +89,7 @@ var DEMO = {
 		this.ms_socket = io();
 
   		this.ms_socket.on('acc', function(msg){
-
 		    acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
-		    var quaternion = new THREE.Quaternion();
-			var a = new THREE.Euler( acc[0], acc[1], acc[2], 'XYZ' );
-			quaternion.setFromEuler(a);
-
-			//var canoaQuaternion = canoa.quaternion;
-			//canoaQuaternion.multiplyQuaternions(quaternion, canoaQuaternion);
-			//canoaQuaternion.normalize();
-			canoa.setRotationFromQuaternion(quaternion);
 		    console.log(msg);
 	    });
 
@@ -156,12 +145,10 @@ var DEMO = {
 		this.ms_Water.material.uniforms.time.value += 1.0 / 60.0;
 		this.ms_Controls.update();
 		//console.log(noise.perlin2(this.ms_Time, 1));
-
-
-		// this.ms_Canoa.rotation.x = -2 * Math.PI * acc[1] / 360; //noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
-		// this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
-		// this.ms_Canoa.rotation.z = 2 * Math.PI * acc[2] / 360; //noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
-
+		var quaternion = new THREE.Quaternion();
+		this.ms_Canoa.rotation.z = 2 * Math.PI * acc[2] / 360; //noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
+		this.ms_Canoa.rotation.x = -2 * Math.PI * acc[1] / 360; //noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
+		this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
 		this.display();
 		this.ms_stats.update();
 		//console.log(acc);
