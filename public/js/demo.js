@@ -121,7 +121,7 @@ var DEMO = {
         this.ms_Canoa = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
         this.ms_Canoa.castShadow = true;
-        //this.ms_Canoa.rotation.x = - Math.PI * 0.5;
+        this.ms_Canoa.rotation.z = - Math.PI * 0.5;
 
         // add the cube to the scene
         this.ms_Scene.add(this.ms_Canoa);
