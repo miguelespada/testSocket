@@ -204,7 +204,7 @@ var DEMO = {
 
 		if (this.ms_Canoa.rotation.x > refX) {
 			distX = refX - this.ms_Canoa.rotation.x;
-			console.log("Remando");
+			console.log(this.ms_Canoa.position.z);
 		}
 		else distX = 0;
 		refX = this.ms_Canoa.rotation.x;
