@@ -137,6 +137,7 @@ var DEMO = {
     display: function display() {
 		this.ms_Water.render();
 		this.ms_Renderer.render(this.ms_Scene, this.ms_Camera);
+		document.getElementById("Acceleration").innerHTML = acc.toString();
 	},
 	
 	update: function update() {
