@@ -215,8 +215,8 @@ var DEMO = {
 		//this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
 		this.ms_Canoa.position.z = this.ms_Canoa.position.z + distX;
 		this.ms_Camera.position.z = this.ms_Canoa.position.z;
-		this.ms_Camera.lookAt(this.ms_Camera.position.x, 0, this.ms_Camera.position.z);
-		this.ms_Camera.rotation.y = Math.PI / 2;
+		//this.ms_Camera.lookAt(this.ms_Camera.position.x, 0, this.ms_Camera.position.z);
+		//7this.ms_Camera.rotation.y = Math.PI / 2;
 
 
 
