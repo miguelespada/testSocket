@@ -1,4 +1,5 @@
 var gyro = [0, 0, 0, 0];
+var degtorad = Math.PI / 180;
 
 function inverseQuaternion(q)
 {
@@ -12,6 +13,7 @@ function computeOrientationQuaternion() {
 	var invertedQ=inverseQuaternion(quaternion);
 	return invertedQ;
 }
+
 
 function computeQuaternionFromEulers(alpha,beta,gamma)//Alpha around Z axis, beta around X axis and gamma around Y axis intrinsic local space in that order(each axis moves depending on how the other moves so processing order is important)
 {
