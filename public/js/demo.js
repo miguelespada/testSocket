@@ -116,12 +116,12 @@ var DEMO = {
 		this.ms_Scene.add(aMeshMirror);
 
 		// create a cube
-        var cubeGeometry = new THREE.BoxGeometry(4, 4, 80);
+        var cubeGeometry = new THREE.BoxGeometry(80, 4, 4);
         var cubeMaterial = new THREE.MeshPhongMaterial({color: 'red'});
         this.ms_Canoa = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
         this.ms_Canoa.castShadow = true;
-        this.ms_Canoa.rotation.x = - Math.PI * 0.5;
+        //this.ms_Canoa.rotation.x = - Math.PI * 0.5;
 
         // add the cube to the scene
         this.ms_Scene.add(this.ms_Canoa);
@@ -135,8 +135,7 @@ var DEMO = {
 
   		this.ms_socket.on('acc', function(msg){
 		    var acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
-		    gyro=computeQuaternionFromEulers(acc[0], acc[2], acc[1]);
-		    console.log(msg);
+		    gyro=computeQuaternionFromEulers(acc[0], acc[1], acc[2]);
 	    });
 
         this.ms_stats = new Stats();
