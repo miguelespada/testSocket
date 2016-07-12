@@ -13,6 +13,35 @@ function computeOrientationQuaternion() {
 	return invertedQ;
 }
 
+function computeQuaternionFromEulers(alpha,beta,gamma)//Alpha around Z axis, beta around X axis and gamma around Y axis intrinsic local space in that order(each axis moves depending on how the other moves so processing order is important)
+{
+
+	
+	var _x = beta * degtorad ; // beta value
+	var _y = gamma * degtorad ; // gamma value
+	var _z = alpha * degtorad ; // alpha value
+
+	var cX = Math.cos( _x/2 );
+	var cY = Math.cos( _y/2 );
+	var cZ = Math.cos( _z/2 );
+	var sX = Math.sin( _x/2 );
+	var sY = Math.sin( _y/2 );
+	var sZ = Math.sin( _z/2 );
+
+	//
+	// ZXY quaternion construction.
+	//
+
+	var w = cX * cY * cZ - sX * sY * sZ;
+	var x = sX * cY * cZ - cX * sY * sZ;
+	var y = cX * sY * cZ + sX * cY * sZ;
+	var z = cX * cY * sZ + sX * sY * cZ;
+
+	//return [ w, x, y, z ];
+	return {"x":x,"y":y,"z":z,"w":w};//return a simple object with the four quaternion values
+	
+}
+
 var DEMO = {
 
 	ms_Canvas: null,
