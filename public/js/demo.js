@@ -213,7 +213,7 @@ var DEMO = {
 		//this.ms_Canoa.rotation.z = 2 * Math.PI * acc[2] / 360; //noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
 		//this.ms_Canoa.rotation.x = -2 * Math.PI * acc[1] / 360; //noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
 		//this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
-		this.ms_Canoa.position.Z = this.ms_Canoa.position.Z + distX;
+		this.ms_Canoa.position.z = this.ms_Canoa.position.z + distX;
 
 		this.display();
 		this.ms_stats.update();
