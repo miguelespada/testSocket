@@ -90,7 +90,7 @@ var DEMO = {
 
   		this.ms_socket.on('acc', function(msg){
 		    acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
-		    console.log(acc);
+		    console.log(msg);
 	    });
 
         this.ms_stats = new Stats();
@@ -149,7 +149,7 @@ var DEMO = {
 		this.ms_Canoa.rotation.z = noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
 		this.display();
 		this.ms_stats.update();
-		console.log(acc);
+		//console.log(acc);
 
 	},
 	
