@@ -149,7 +149,7 @@ var DEMO = {
 		this.ms_Canoa.rotation.z = noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
 		this.display();
 		this.ms_stats.update();
-		console.log(this.ms_Canoa.rotation.y);
+		console.log(acc);
 
 	},
 	
