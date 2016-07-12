@@ -116,7 +116,7 @@ var DEMO = {
 		this.ms_Scene.add(aMeshMirror);
 
 		// create a cube
-        var cubeGeometry = new THREE.BoxGeometry(4, 80, 4);
+        var cubeGeometry = new THREE.BoxGeometry(80, 80, 4);
         var cubeMaterial = new THREE.MeshPhongMaterial({color: 'red'});
         this.ms_Canoa = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
@@ -184,7 +184,7 @@ var DEMO = {
     display: function display() {
 		this.ms_Water.render();
 		this.ms_Renderer.render(this.ms_Scene, this.ms_Camera);
-		if (gyro != undefined) document.getElementById("Acceleration").innerHTML = "X: " + gyro[0] + "Y: " + gyro[1] + "Z: " + gyro[2];
+		if (gyro != undefined) document.getElementById("Acceleration").innerHTML = "X: " + this.ms_Canoa.rotationX + " Y: " + this.ms_Canoa.rotationY + " Z: " + this.ms_Canoa.rotationZ;
 	},
 	
 	update: function update() {
