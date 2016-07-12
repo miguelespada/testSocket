@@ -135,7 +135,7 @@ var DEMO = {
 
   		this.ms_socket.on('acc', function(msg){
 		    var acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
-		    gyro=computeQuaternionFromEulers(acc[1], acc[0], acc[2]);
+		    gyro=computeQuaternionFromEulers(acc[2], acc[1], acc[0]);
 		    console.log(msg);
 	    });
 
