@@ -1,6 +1,10 @@
 var gyro = [0, 0, 0, 0];
 var degtorad = Math.PI / 180;
 
+var refX = 0;
+var distX = 0;
+
+
 function inverseQuaternion(q)
 {
 	return {"x":q.x,"y":q.y,"z":q.z,"w": -q.w};
@@ -191,7 +195,6 @@ var DEMO = {
 		this.ms_Time += 0.007;
 		this.ms_Water.material.uniforms.time.value += 1.0 / 60.0;
 		this.ms_Controls.update();
-		//console.log(noise.perlin2(this.ms_Time, 1));
 		
 		var q=computeOrientationQuaternion(); //w,x,y,z
 		var quot = new THREE.Quaternion(); 
@@ -199,9 +202,16 @@ var DEMO = {
 
 		this.ms_Canoa.setRotationFromQuaternion(quot);
 
+		if (this.ms_Canoa.rotation.x > refX) distX = refX - this.ms_Canoa.rotation.x;
+		else distX = 0;
+		refX = this.ms_Canoa.rotation.x;
+
+
 		//this.ms_Canoa.rotation.z = 2 * Math.PI * acc[2] / 360; //noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
 		//this.ms_Canoa.rotation.x = -2 * Math.PI * acc[1] / 360; //noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
 		//this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
+		this.ms_Canoa.position.Z += distX;
+		
 		this.display();
 		this.ms_stats.update();
 		//console.log(acc);
