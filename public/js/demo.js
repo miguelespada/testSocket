@@ -1,4 +1,4 @@
-var gyro = {0, 0, 0, 0};
+var gyro = [0, 0, 0, 0];
 
 function inverseQuaternion(q)
 {
