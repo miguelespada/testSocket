@@ -203,7 +203,7 @@ var DEMO = {
 		this.ms_Canoa.setRotationFromQuaternion(quot);
 
 		if (this.ms_Canoa.rotation.x > refX) {
-			distX = (refX - this.ms_Canoa.rotation.x) * 50;
+			distX = (this.ms_Canoa.rotation.x - refX) * 50;
 			console.log(this.ms_Canoa.position.z);
 		}
 		else distX = 0;
