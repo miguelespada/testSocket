@@ -116,7 +116,7 @@ var DEMO = {
 		this.ms_Scene.add(aMeshMirror);
 
 		// create a cube
-        var cubeGeometry = new THREE.BoxGeometry(4, 2, 80);
+        var cubeGeometry = new THREE.BoxGeometry(4, 4, 80);
         var cubeMaterial = new THREE.MeshPhongMaterial({color: 'red'});
         this.ms_Canoa = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
@@ -135,7 +135,7 @@ var DEMO = {
 
   		this.ms_socket.on('acc', function(msg){
 		    var acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
-		    gyro=computeQuaternionFromEulers(acc[0], acc[1], acc[2]);
+		    gyro=computeQuaternionFromEulers(acc[1], acc[0], acc[2]);
 		    console.log(msg);
 	    });
 
