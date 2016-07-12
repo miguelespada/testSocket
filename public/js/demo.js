@@ -78,6 +78,8 @@ var DEMO = {
 
         this.ms_Canoa.castShadow = true;
 
+        var canoa = this.ms_Canoa;
+
         // add the cube to the scene
         this.ms_Scene.add(this.ms_Canoa);
 
@@ -89,15 +91,16 @@ var DEMO = {
 		this.ms_socket = io();
 
   		this.ms_socket.on('acc', function(msg){
+
 		    acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
 		    var quaternion = new THREE.Quaternion();
 			var a = new THREE.Euler( acc[0], acc[1], acc[2], 'XYZ' );
 			quaternion.setFromEuler(a);
 
-			var canoaQuaternion = this.ms_Canoa.quaternion;
-			canoaQuaternion.multiplyQuaternions(quaternion, canoaQuaternion);
-			canoaQuaternion.normalize();
-			this.ms_Canoa.setRotationFromQuaternion(canoaQuaternion);
+			//var canoaQuaternion = canoa.quaternion;
+			//canoaQuaternion.multiplyQuaternions(quaternion, canoaQuaternion);
+			//canoaQuaternion.normalize();
+			canoa.setRotationFromQuaternion(quaternion);
 		    console.log(msg);
 	    });
 
