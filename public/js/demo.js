@@ -145,9 +145,19 @@ var DEMO = {
 		this.ms_Water.material.uniforms.time.value += 1.0 / 60.0;
 		this.ms_Controls.update();
 		//console.log(noise.perlin2(this.ms_Time, 1));
-		this.ms_Canoa.rotation.x = -2 * Math.PI * acc[1] / 360; //noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
-		this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
-		this.ms_Canoa.rotation.z = 2 * Math.PI * acc[2] / 360; //noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
+		var quaternion = new THREE.Quaternion();
+		var a = new THREE.Euler( acc[0], acc[1], acc[2], 'XYZ' );
+		quaternion.setFromEuler(a);
+
+		var canoaQuaternion = this.ms_Canoa.quaternion;
+		canoaQuaternion.multiplyQuaternions(quaternion, canoaQuaternion);
+		canoaQuaternion.normalize();
+		this.ms_Canoa.setRotationFromQuaternion(canoaQuaternion);
+
+		// this.ms_Canoa.rotation.x = -2 * Math.PI * acc[1] / 360; //noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
+		// this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
+		// this.ms_Canoa.rotation.z = 2 * Math.PI * acc[2] / 360; //noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
+
 		this.display();
 		this.ms_stats.update();
 		//console.log(acc);
