@@ -1,4 +1,4 @@
-var alpha = 0;
+var acc = [0, 0, 0];
 
 var DEMO = {
 
@@ -11,7 +11,6 @@ var DEMO = {
 	ms_Canoa: null,
 	ms_Time: null,
 	ms_stats: null,
-	ms_alpha: null,
 	ms_socket: null,
 
 
@@ -88,12 +87,10 @@ var DEMO = {
 		this.ms_Time = 0;
 
 		this.ms_socket = io();
-		this.ms_alpha = 0;
 
-
-  		this.ms_socket.on('alpha', function(msg){
-		    alpha =  Math.floor(msg);
-		    console.log(alpha);
+  		this.ms_socket.on('acc', function(msg){
+		    acc =  [Math.floor(msg[0]), Math.floor(msg[1]), Math.floor(msg[2])];
+		    console.log(acc);
 	    });
 
         this.ms_stats = new Stats();
@@ -148,7 +145,7 @@ var DEMO = {
 		this.ms_Controls.update();
 		//console.log(noise.perlin2(this.ms_Time, 1));
 		this.ms_Canoa.rotation.x =  noise.perlin2(this.ms_Time, 1) * Math.PI * 0.02;
-		this.ms_Canoa.rotation.y = 2 * Math.PI * alpha / 360;
+		this.ms_Canoa.rotation.y = 2 * Math.PI * acc[0] / 360;
 		this.ms_Canoa.rotation.z = noise.perlin2(this.ms_Time, 2) * Math.PI * 0.02;
 		this.display();
 		this.ms_stats.update();

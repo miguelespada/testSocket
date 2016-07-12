@@ -20,7 +20,9 @@
     alpha = Math.round(event.alpha);
     beta = Math.round(event.beta);
     gamma = Math.round(event.gamma);
-    socket.emit('acc', alpha);
+    var acc = [alpha, beta, gamma];
+    socket.emit('acc', acc);
+
   }
 
 </script>
