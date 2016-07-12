@@ -184,7 +184,7 @@ var DEMO = {
     display: function display() {
 		this.ms_Water.render();
 		this.ms_Renderer.render(this.ms_Scene, this.ms_Camera);
-		if (gyro != undefined) document.getElementById("Acceleration").innerHTML = "X: " + this.ms_Canoa.rotationX + " Y: " + this.ms_Canoa.rotationY + " Z: " + this.ms_Canoa.rotationZ;
+		if (gyro != undefined) document.getElementById("Acceleration").innerHTML = "X: " + this.ms_Canoa.rotation.x + " Y: " + this.ms_Canoa.rotation.y + " Z: " + this.ms_Canoa.rotation.z;
 	},
 	
 	update: function update() {
